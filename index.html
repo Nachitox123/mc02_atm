@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero MIGG</title>
+    <link rel="icon" href="assets/atm-machine-16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="assets/atm-machine-64.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="assets/atm-machine-512.png" type="image/png" sizes="512x512">
+    <link rel="stylesheet" href="styles/cajero.css">
+    <script defer src="scripts/cajeroDOM.js"></script>
+</head>
+<body>
+    <!--HEADER -->
+    <header>
+        ATM
+    </header>
+
+    <!--MAIN -->
+    <main>
+        <section class="screen">
+            <!-- LOGIN -->
+            <section id="login">
+                <h1>Bienvenido</h1>
+                <p>Usuario <input type="text" name="user" id="inputUser"></p>
+                <p>Contraseña <input type="password" name="pass" id="inputPassword"></p>
+                <p><input type="submit" value="Ingresar" onclick="login()"></p>
+            </section>
+
+            <!-- LOGIN SUCCESS -->
+             <section id="loginSuccess">
+                <h1>Hola, <span id="user"></span>.</h1>
+             </section>
+
+            <!-- LOGIN FAIL -->
+            <section id="loginFail">
+                <h1>
+                    Credenciales inválidas.
+                    <br>
+                    Intente nuevamente.
+                </h1>
+            </section>
+
+            <!-- OPTIONS -->
+            <section id="options">
+                <h1>Seleccione una opción</h1>
+                <p><input type="submit" value="1" onclick="balance()"> - Consultar saldo</p>
+                <p><input type="submit" value="2" onclick="hideAndShow('options', 'deposit')"> - Depositar</p>
+                <p><input type="submit" value="3" onclick="hideAndShow('options', 'withdraw')"> - Retirar</p>
+                <p><input type="submit" value="4" onclick="logout()"> - Salir</p>
+            </section>
+
+            <!-- BALANCE -->
+            <section id="balance">
+                <h1>Consulta de Saldo</h1>
+                <p>Su saldo es de $<span id="currentBalance"></span>.</p>
+                <p><input type="submit" value="Regresar" onclick="hideAndShow('balance', 'options')"></p>
+            </section>
+
+            <!-- DEPOSIT -->
+            <section id="deposit">
+                <h1>Depósito</h1>
+                <p>Cantidad a depositar <input type="number" name="deposit" id="depositAmount"></p>
+                <p><input type="submit" value="Depositar" onclick="deposit()"></p>
+            </section>
+
+            <!-- DEPOSIT SUCCESS -->
+            <section id="depositSuccess">
+                <h1>
+                    Usted ha depositado $<span id="depositValue"></span>.
+                    <br>
+                    Su nuevo saldo es de $<span id="depositBalance"></span>.
+                </h1>
+            </section>
+
+            <!-- DEPOSIT FAIL -->
+            <section id="depositFail">
+                <h1>
+                    Saldo permitido en la cuenta excedido (limitado a $990).
+                    <br>
+                    Intente nuevamente.
+                </h1>
+            </section>
+
+            <!-- WITHDRAW -->
+            <section id="withdraw">
+                <h1>Retiro</h1>
+                <p>Cantidad a retirar <input type="number" name="withdraw" id="withdrawAmount"></p>
+                <p><input type="submit" value="Retirar" onclick="withdraw()"></p>
+            </section>
+
+            <!-- WITHDRAW SUCCESS -->
+            <section id="withdrawSuccess">
+                <h1>
+                    Usted ha retirado $<span id="withdrawValue"></span>.
+                    <br>
+                    Su nuevo saldo es de $<span id="withdrawBalance"></span>.
+                </h1>
+            </section>
+
+            <!-- WITHDRAW FAIL -->
+            <section id="withdrawFail">
+                <h1>
+                    Fondos insuficientes.
+                    <br>
+                    Se requiere un balance mínimo de $10.
+                    <br>
+                    Intente nuevamente.
+                </h1>
+            </section>
+
+            <!-- AMOUNT ERROR -->
+            <section id="amountError">
+                <h1>
+                    Cantidad inválida.
+                    <br>
+                    Ingrese un monto superior a $0.
+                </h1>
+            </section>
+
+            <!-- LOGOUT -->
+            <section id="logout">
+                <h1>
+                    Cerrando sesión.
+                    <br>
+                    Hasta pronto.
+                </h1>
+            </section>
+        </section>
+        <section class="buttons">
+            <img src="assets/keypad.png" alt="ATM keypad">
+        </section>
+    </main>
+
+    <!--FOOTER -->
+    <footer>
+
+    </footer>
+</body>
+</html>
